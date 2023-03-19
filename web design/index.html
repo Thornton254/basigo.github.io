@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Door-to-Door Bus Transportation System</title>
+  </head>
+  <body style="background-image: url(buses.jpg); background-size: cover;">
+    <img src="buses.jpg" alt="Metro Trans" style="display: none;">>
+    <h1>Welcome to the Door-to-Door Bus Transportation System</h1>
+    <form>
+        <input type="text" placeholder="Email">
+        <input type="password" placeholder="Password">
+        <button type="submit">Login</button>
+      </form>
+      
+      <form>
+        <input type="text" placeholder="Name">
+        <input type="text" placeholder="Email">
+        <input type="password" placeholder="Password">
+        <button type="submit">Register</button>
+
+      </form>
+    <form>
+      <label for="pickup-location">Pickup Location:</label>
+      <input type="text" id="pickup-location" name="pickup-location" required>
+      <br><br>
+      <label for="dropoff-location">Dropoff Location:</label>
+      <input type="text" id="dropoff-location" name="dropoff-location" required>
+      <br><br>
+      <label for="passenger-count">Number of Passengers:</label>
+      <input type="number" id="passenger-count" name="passenger-count" required>
+      <br><br>
+      <button type="submit">Request Ride</button>
+    </form>
+    <form>
+        <input type="text" placeholder="Card number">
+        <input type="text" placeholder="Expiration date">
+        <input type="text" placeholder="CVC">
+        <button type="submit">Pay</button>
+      </form>
+      
+      <!-- Example HTML code for a contact form -->
+
+<form>
+    <input type="text" placeholder="Name">
+    <input type="email" placeholder="Email">
+    <textarea placeholder="Message"></textarea>
+    <button type="submit">Send</button>
+  </form>
+  <script>
+    const updateLocation = (lat, lng) => {
+      const location = {
+        lat,
+        lng
+      };
+      // send updated location to the server
+    };
+    
+    navigator.geolocation.watchPosition(position => {
+      const { latitude, longitude } = position.coords;
+      updateLocation(latitude, longitude);
+    });
+  
+    const verifyDriver = async (driverId) => {
+      try {
+        const response = await fetch(`/api/drivers/${driverId}/verify`);
+        const data = await response.json();
+        if (data.status === 'success') {
+          console.log(`Driver ${driverId} has been verified`);
+        } else {
+          console.error(`Failed to verify driver ${driverId}`);
+        }
+      } catch (error) {
+        console.error(`An error occurred while verifying driver ${driverId}:`, error);
+      }
+    };
+  </script>
+  
+            
+  </body>
+</html>
